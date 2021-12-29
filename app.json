@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "30DaysCode",
+    "slug": "30DaysCode",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "30DaysCode"
+}
