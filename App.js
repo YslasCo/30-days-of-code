@@ -30,6 +30,8 @@ import { Text, TextInput, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
+
 function HomeScreen({ navigation, route }) {
   React.useEffect(() => {
     if (route.params?.post) {
@@ -38,12 +40,18 @@ function HomeScreen({ navigation, route }) {
     }
   }, [route.params?.post]);
 
+  
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button
         title="Create post"
         onPress={() => navigation.navigate('CreatePost')}
       />
+      <Button title="Page 3"
+        onPress={() => navigation.navigate('Page3')}
+        />
+   {/* This button I added, no copy paste from react navigation */}
       <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
     </View>
   );
@@ -76,6 +84,21 @@ function CreatePostScreen({ navigation, route }) {
   );
 }
 
+
+function Page3({ navigation, route }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Page 3</Text>
+      <Button
+        title="Page 3"
+        onPress={() => navigation.navigate('Page 3')}
+      />
+    </View>
+  );
+}
+
+// Added this App
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -84,6 +107,8 @@ export default function App() {
       <Stack.Navigator mode="modal">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="CreatePost" component={CreatePostScreen} />
+        <Stack.Screen name="Page3" component={Page3} />
+        {/* Added page 3 */}
       </Stack.Navigator>
     </NavigationContainer>
   );
