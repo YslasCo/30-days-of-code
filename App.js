@@ -26,9 +26,10 @@
 //   }
 // });
 import * as React from 'react';
-import { Text, TextInput, View, Button } from 'react-native';
+import { Text, TextInput, View, Button, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 
 
@@ -43,13 +44,21 @@ function HomeScreen({ navigation, route }) {
   
 
   return (
+    
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Image 
+      style={{width: 150, height: 150}}
+      source={require('./assets/ape2.png')}/>
+      {/* C:\Users\jrysl\OneDrive\Desktop\30DaysCode\assets\ape2.png */}
       <Button
         title="Create post"
         onPress={() => navigation.navigate('CreatePost')}
       />
       <Button title="Page 3"
         onPress={() => navigation.navigate('Page3')}
+        />
+      <Button title="Page 4"
+        onPress={() => navigation.navigate('Page4')}
         />
    {/* This button I added, no copy paste from react navigation */}
       <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
@@ -93,11 +102,24 @@ function Page3({ navigation, route }) {
         title="Page 3"
         onPress={() => navigation.navigate('Page 3')}
       />
+      <Image source={require('./assets/ape2.png')}/>
     </View>
   );
 }
 
-// Added this App
+function Page4({ navigation, route }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Page 4</Text>
+      <Button
+        title="Page 4"
+        onPress={() => navigation.navigate('Page 4')}
+      />
+    </View>
+  );
+}
+
+// Added these pages and buttons to the App
 
 const Stack = createNativeStackNavigator();
 
@@ -109,6 +131,8 @@ export default function App() {
         <Stack.Screen name="CreatePost" component={CreatePostScreen} />
         <Stack.Screen name="Page3" component={Page3} />
         {/* Added page 3 */}
+        <Stack.Screen name="Page4" component={Page4} />
+{/* Added page 4 too */}
       </Stack.Navigator>
     </NavigationContainer>
   );
